@@ -148,7 +148,7 @@ header > h1 {
   font-size: 46px;
   padding: 15px 20px;
   font-family: Asap, sans-serif;
-  position: relaive;
+  position: relative;
 }
 
 .badge {
@@ -161,14 +161,14 @@ header > h1 {
 
 #user-label {
   position: absolute;
-  top: 222px;
-  left: 694px;
+  top: 30px;
+  left: -25px;
 }
 
 #computer-label {
   position: absolute;
-  top: 222px;
-  right: 694px;
+  top: 30px;
+  right: -30px;
 }
 
 .result {
