@@ -10,7 +10,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #292C34;
+  background-color: #242333;
   font-family: 'inter';
   text-align: center;
   font-size: 15px;
@@ -22,7 +22,7 @@ body {
   margin:0;
   padding:0;
   overflow: hidden;
-  background-color: #24272e;
+  background-color: #01b0d3;
   position: fixed;
   top: 0;
   width: 100%;
@@ -43,7 +43,7 @@ body {
 }
        
 .navbar li a:hover:not(.active) {
-  background-color: #3a3e49;
+  background-color: #0098b6;
   transition: 0.25s ease-in 50ms;
 }
        
@@ -71,11 +71,11 @@ body {
 }
        
 .dropbtn:hover {
-  background-color: #3a3e49;
+  background-color: #0098b6;
 }
 
 .navbar a:hover:not(.active) .dropdown:hover .dropbtn {
-  background-color: #292C34;
+  background-color: #0098b6;
 }
        
 .dropdown-content {
@@ -83,7 +83,7 @@ body {
   display: none;
   position:fixed;
   color: #ffffff;
-  background-color: #24272e;
+  background-color: #01b0d3;
   min-width: 130px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
@@ -99,7 +99,7 @@ body {
 }
        
 .dropdown-content a:hover {
-  background-color: #3a3e49;
+  background-color: #0098b6;
   color:#fff;
 }
        
@@ -114,19 +114,18 @@ body {
 /* Rock, Paper, Scissors game */ 
 
 header {
-  background: white;
   padding: 20px;
 }
 
 
 header > h1 {
-  color: #24272E;
+  color: #fff;
   text-align: center;
   font-family: Asap, sans-serif;
 }
 
 .reset-button {
-  background-color: #b40000;
+  background-color: #0098b6;
   border: none;
   color: white;
   padding: 10px 30px;
