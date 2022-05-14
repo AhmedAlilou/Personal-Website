@@ -117,6 +117,9 @@ header {
   padding: 20px;
 }
 
+.title{
+  color: #ffffff
+}
 
 header > h1 {
   color: #fff;
@@ -134,6 +137,32 @@ header > h1 {
   display: inline-block;
   font-size: 16px;
   margin: 12px 0px;
+  cursor: pointer;
+}
+
+.higher {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.lower {
+  background-color: #af4c4c;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
   cursor: pointer;
 }
 
