@@ -5,33 +5,100 @@ let countryIndex = countries[randomIndex]
 let countryIndex2 = countries[randomIndex2]
 let score = 0
 let options = []
-
+let country = ""
+let country2 = ""
+let size = 0
+let size2 = 0
+let higher = false
+let lower = false
+let guess = ""
 if (typeof countryIndex == "number") {
-    console.log(countryIndex)
+    size = countryIndex
     randomIndex --
     countryIndex = countries[randomIndex]
-    console.log(countryIndex)
+    country = countryIndex
+    console.log(country, size)
+
+}
+
+else if (typeof countryIndex == "string") {
+    country = countryIndex
+    randomIndex ++
+    countryIndex = countries[randomIndex]
+    size = countryIndex
+    console.log(country, size)
 }
 
 if (typeof countryIndex2 == "number") {
-    console.log(countryIndex2)
+    size2 = countryIndex2
     randomIndex2 --
     countryIndex2 = countries[randomIndex2]
-    console.log(countryIndex2)
+    country2 = countryIndex2
+    console.log(country2, size2)
 }
 
-let play = true
-while (play == true){
-    while (options[0] == options[1]){
-        randomIndex2 = Math.floor(Math.random()*392)
+else if (typeof countryIndex2 == "string") {
+    country2 = countryIndex2
+    randomIndex2 ++
+    countryIndex2 = countries[randomIndex2]
+    size2 = countryIndex2
+    console.log(country2, size2)
+}
+
+function newCountry(){
+    randomIndex2 = Math.floor(Math.random()*392)
+    countryIndex2 = countries[randomIndex2]
+    if (countryIndex == countryIndex2) {
         countryIndex2 = countries[randomIndex2]
+    }
+
+    
+    if (typeof countryIndex2 == "number") {
+        size2 = countryIndex2
+        randomIndex2 --
+        countryIndex2 = countries[randomIndex2]
+        country2 = countryIndex2
+        console.log(country2, size2)
+    }
+    
+    else if (typeof countryIndex2 == "string") {
+        country2 = countryIndex2
+        randomIndex2 ++
+        countryIndex2 = countries[randomIndex2]
+        size2 = countryIndex2
+        console.log(country2, size2)
+    }
+    options[0] = options[1]
+    options[1] = country2
+    console.log(options)
+}
+
+if (countryIndex == countryIndex2) {
+    countryIndex2 = countries[randomIndex2]
+}
+if (countryIndex == countryIndex2) {
+    countryIndex2 = countries[randomIndex2]
+}
+
+options.push(country)
+options.push(country2)
+
+function guessHigher() {
+    guess = "higher"
+    if (higher == true) {
+        score ++
+        console.log(`you guessed it right, your score is ${score}`)
+        newCountry()
     }
 }
 
-function higher(){
-
+if (size2 > size) {
+    console.log("higher")
+    higher = true
+} else if (size > size2) {
+    console.log("lower")
+    lower = true
 }
 
-function lower(){
 
-}
+console.log(options)
