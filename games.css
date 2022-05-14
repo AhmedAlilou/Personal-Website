@@ -85,8 +85,9 @@ body {
   color: #ffffff;
   background-color: #01b0d3;
   min-width: 130px;
+  min-height: 80px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+  z-index: 10;
 }
        
 .dropdown-content a {
@@ -100,6 +101,7 @@ body {
        
 .dropdown-content a:hover {
   background-color: #0098b6;
+  min-height: 40px;
   color:#fff;
 }
        
@@ -138,6 +140,12 @@ header > h1 {
   font-size: 16px;
   margin: 12px 0px;
   cursor: pointer;
+}
+
+/* higher or lower game*/
+
+.result {
+  margin-bottom: 10px;
 }
 
 .higher {

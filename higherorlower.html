@@ -33,10 +33,18 @@
 
     <header>
             <h1>Higher or Lower</h1>
-        </header>
+    </header>
 
-        <button class="higher" id="h" onclick="guessHigher()">Higher</button>
-        <button class="lower" id="l" onclick="lower()">Lower</button>
+    <div class="result">
+      <p id="message"></p>
+    </div>
+
+    <button class="higher" id="h" onclick="guessHigher()">Higher</button>
+    <button class="lower" id="l" onclick="guessLower()">Lower</button>
+
+    <div class="result">
+      <p id="score">Score: 0</p>
+    </div>
 
     </body>
     <script src="hol.js" charset="utf-8"></script>

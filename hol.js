@@ -9,15 +9,15 @@ let country = ""
 let country2 = ""
 let size = 0
 let size2 = 0
-let higher = false
-let lower = false
-let guess = ""
+let message = document.getElementById("message")
+let scoreP = document.getElementById("score")
+
+
 if (typeof countryIndex == "number") {
     size = countryIndex
     randomIndex --
     countryIndex = countries[randomIndex]
     country = countryIndex
-    console.log(country, size)
 
 }
 
@@ -26,7 +26,6 @@ else if (typeof countryIndex == "string") {
     randomIndex ++
     countryIndex = countries[randomIndex]
     size = countryIndex
-    console.log(country, size)
 }
 
 if (typeof countryIndex2 == "number") {
@@ -34,7 +33,6 @@ if (typeof countryIndex2 == "number") {
     randomIndex2 --
     countryIndex2 = countries[randomIndex2]
     country2 = countryIndex2
-    console.log(country2, size2)
 }
 
 else if (typeof countryIndex2 == "string") {
@@ -42,7 +40,6 @@ else if (typeof countryIndex2 == "string") {
     randomIndex2 ++
     countryIndex2 = countries[randomIndex2]
     size2 = countryIndex2
-    console.log(country2, size2)
 }
 
 function newCountry(){
@@ -58,47 +55,54 @@ function newCountry(){
         randomIndex2 --
         countryIndex2 = countries[randomIndex2]
         country2 = countryIndex2
-        console.log(country2, size2)
     }
     
     else if (typeof countryIndex2 == "string") {
         country2 = countryIndex2
         randomIndex2 ++
+        scoreP.innerHTML = `Score: ${score}`
         countryIndex2 = countries[randomIndex2]
         size2 = countryIndex2
-        console.log(country2, size2)
     }
-    options[0] = options[1]
-    options[1] = country2
-    console.log(options)
+    options[0] = options[2]
+    options[1] = options[3]
+    options[2] = country2
+    options[3] = size2
+    message.innerHTML = `Is ${options[2]} higher or lower than ${options[0]}(${options[1]}km²) in size?` 
+    // change country2 to options[1] and change country to options[0]
 }
 
-if (countryIndex == countryIndex2) {
-    countryIndex2 = countries[randomIndex2]
-}
-if (countryIndex == countryIndex2) {
-    countryIndex2 = countries[randomIndex2]
+function gameReset() {
+    score = 0
+    scoreP.innerHTML = `Score: ${score}`
+    randomIndex = Math.floor(Math.random()*392)
+    countryIndex = countries[randomIndex]
+    newCountry()
+    message.innerHTML = `Is ${options[2]} higher or lower than ${options[0]}(${options[1]}km²) in size?`
+
 }
 
-options.push(country)
-options.push(country2)
+options.push(country, size)
+options.push(country2, size2)
 
 function guessHigher() {
-    guess = "higher"
-    if (higher == true) {
+    if (options[3] > options[1]) {
         score ++
-        console.log(`you guessed it right, your score is ${score}`)
+        scoreP.innerHTML = `Score: ${score}`
         newCountry()
+    } else {
+        gameReset()
     }
 }
 
-if (size2 > size) {
-    console.log("higher")
-    higher = true
-} else if (size > size2) {
-    console.log("lower")
-    lower = true
+function guessLower() {
+    if (options[1] > options[3]) {
+        score ++
+        scoreP.innerHTML = `Score: ${score}`
+        newCountry()
+    } else {
+        gameReset()
+    }
 }
-
-
+message.innerHTML = `Is ${options[2]} higher or lower than ${options[0]}(${options[1]}km²) in size?` 
 console.log(options)
