@@ -124,4 +124,3 @@ function guessLower() {
 }
 message.innerHTML = `Is ${options[2]} higher or lower than ${options[0]}(${options[1]}km²) in area?` 
 highscoreP.innerHTML = `Highscore: ${highscore}`
-console.log(options)

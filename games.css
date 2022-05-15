@@ -156,14 +156,21 @@ header > h1 {
   background-color: #4CAF50;
   border: none;
   color: white;
-  padding: 15px 32px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   margin: 4px 2px;
   margin-left: 37%;
-  cursor: pointer;
+  cursor: pointer
+}
+
+.higher:hover {
+  background: #39873b;
+  transition: 0.25s ease-in 50ms;
 }
 
 .circle {
@@ -187,7 +194,9 @@ header > h1 {
   background-color: #af4c4c;
   border: none;
   color: white;
-  padding: 15px 32px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -195,6 +204,11 @@ header > h1 {
   margin: 4px 2px;
   margin-right: 37%;
   cursor: pointer;
+}
+
+.lower:hover {
+  background: #793434;
+  transition: 0.25s ease-in 50ms;
 }
 
 .higherorlower {
