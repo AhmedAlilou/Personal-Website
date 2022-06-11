@@ -35,17 +35,26 @@
     </header>
 
     <div class="stats">
-      <h3>name: </h3>
+      <h2 id="cardsInDeck">cards in deck: </h2>
+      <h2 id="cardsInMiddle">cards in middle: </h2>
+      <h2 id="name">name: </h2>
       <span>
-        <h3>speed: </h3>
-        <button onclick="speed()">Speed</button>
-        </span>
+        <h3 id="speed">speed: </h3>
+        <button id="speedButton" onclick="speed()">Speed</button>
+      </span>
       <span>
-        <h3>shooting: </h3> 
-        <button>Shooting</button>
-        </span>
+        <h3 id="shooting">shooting: </h3> 
+        <button id="shootingButton" onclick="shooting()">Shooting</button>
+      </span>
+      <span>
+        <h3 id="height">height: </h3> 
+        <button id="heightButton" onclick="height()">Height</button>
+      </span>
     </div>
 
+    <div class="result">
+      <p id="message" class="message">1</p>
+    </div>
 
     <script src="cardgame.js" charset="utf-8"></script>
     </body>
