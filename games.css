@@ -432,8 +432,13 @@ h3 {
   text-align: center;
   font-family: Asap, sans-serif;
   outline: inherit;
+  cursor: pointer;
 }
 
-.stats > button:hover {
+.stats > button:hover:enabled {
   background-color: #171723;
+}
+
+.stats > button:disabled {
+  opacity: 50%;
 }

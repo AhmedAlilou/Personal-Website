@@ -1,9 +1,13 @@
 const card1 = new card('Lebron James', 'cardImages/lebron.jpeg', 88, 79, 89, 90)
 const card2 = new card('Joel Embiid', 'cardImages/embiid.jpeg', 67, 93, 95, 94)
-const card3 = new card('Steph Curry', 'cardImages/curry.jpeg', 86, 97, 79, 76)
+const card3 = new card('Steph Curry', 'cardImages/curry.jpeg', 86, 97, 70, 78)
 const card4 = new card('James Harden', 'cardImages/harden.webp', 87, 90, 88, 91)
-const card5 = new card('Kevin Durant', 'cardImages/durant.jpg', 83, 92, 90, 89)
+const card5 = new card('Kevin Durant', 'cardImages/durant.jpg', 83, 92, 90, 91)
 const card6 = new card('Ben Simmons', 'cardImages/simmons.jpeg', 89, 36, 91, 90)
+const card7 = new card('Giannis Antetokonmpo', 'cardImages/giannis.webp', 86, 75, 92, 93)
+const card8 = new card('Ja Morant', 'cardImages/morant.jpeg', 95, 85, 73, 88)
+const card9 = new card('Nikola Jokic', 'cardImages/jokic.webp', 70, 84, 94, 93)
+const card10 = new card('Luka Dončić', 'cardImages/doncic.webp', 86, 92, 85, 84)
 
 let speedButton = document.getElementById('speedButton')
 let shootingButton = document.getElementById('shootingButton')
@@ -27,7 +31,7 @@ function card(name, image, speed, shooting, height, rebound) {
     this.rebound = rebound
 }
 
-let cards = [card1, card2, card3, card4, card5, card6]
+let cards = [card1, card2, card3, card4, card5, card6, card7, card8, card9, card10]
 let userDeck = []
 let compDeck = []
 let centrePile = []
@@ -68,6 +72,8 @@ function win() {
     for (let i = centrePile.length - 1; i >= 0; i --) {
         userDeck.push(centrePile[i])
     }
+
+    centrePile.splice(0,centrePile.length)
     compDeck.shift()
 
     newMessage()
@@ -84,8 +90,12 @@ function draw() {
     speedButton.disabled = false
     shootingButton.disabled = false
     heightButton.disabled = false
+    reboundButton.disabled = false
     console.log("draw")
     centrePile.push(userDeck[0], compDeck[0])
+    userDeck.shift()
+    compDeck.shift()
+    newMessage()
     compTurn()
     
 
@@ -100,12 +110,15 @@ function lose() {
     speedButton.disabled = false
     shootingButton.disabled = false
     heightButton.disabled = false
-    console.log("lose")
+    reboundButton.disabled = false
     compDeck.push(compDeck.shift())
     compDeck.push(userDeck[0])
     for (let i = centrePile.length - 1; i >= 0; i --) {
         compDeck.push(centrePile[i])
     }
+
+    centrePile.splice(0,centrePile.length)
+
     userDeck.shift()
 
     if (userDeck.length > 0) {
