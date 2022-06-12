@@ -34,26 +34,27 @@
         <h1>Card game</h1>
     </header>
 
-    <div class="stats">
+    
       <h2 id="cardsInDeck">cards in deck: </h2>
       <h2 id="cardsInMiddle">cards in middle: </h2>
-      <h2 id="name">name: </h2>
-      <span>
-        <h3 id="speed">speed: </h3>
-        <button id="speedButton" onclick="speed()">Speed</button>
-      </span>
-      <span>
-        <h3 id="shooting">shooting: </h3> 
-        <button id="shootingButton" onclick="shooting()">Shooting</button>
-      </span>
-      <span>
-        <h3 id="height">height: </h3> 
-        <button id="heightButton" onclick="height()">Height</button>
-      </span>
+      
+      <div class="card">
+        <h2 id="name" class="name"></h2>
+        <img class="card-photo" id="cardimage" src="cardImages/lebron.jpeg">
+        <div class="stats">
+          <h3 id="speed" class="speed">speed: </h3>
+          <button id="speedButton" class="speedButton" onclick="speed()">Speed</button>
+          <h3 id="shooting" class="shooting">shooting: </h3> 
+          <button id="shootingButton" class="shootingButton" onclick="shooting()">Shooting</button>
+          <h3 id="height" class="height">height: </h3> 
+          <button id="heightButton" class="heightButton" onclick="height()">Height</button>
+          <h3 id="rebound" class="rebound">Rebounding: </h3> 
+          <button id="reboundButton" class="reboundButton" onclick="rebound()">Rebound</button>
+      </div>
     </div>
 
     <div class="result">
-      <p id="message" class="message">1</p>
+      <p id="message" class="message"></p>
     </div>
 
     <script src="cardgame.js" charset="utf-8"></script>

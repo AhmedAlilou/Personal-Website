@@ -1,49 +1,59 @@
-const card1 = new card('Lebron James', 88, 79, 89)
-const card2 = new card('Joel Embiid', 67, 93, 95)
-const card3 = new card('Steph Curry', 86, 97, 79)
-const card4 = new card('James Harden', 87, 90, 88)
-const card5 = new card('Kevin Durant', 83, 92, 90)
-const card6 = new card('Ben Simmons', 89, 36, 91)
+const card1 = new card('Lebron James', 'cardImages/lebron.jpeg', 88, 79, 89, 90)
+const card2 = new card('Joel Embiid', 'cardImages/embiid.jpeg', 67, 93, 95, 94)
+const card3 = new card('Steph Curry', 'cardImages/curry.jpeg', 86, 97, 79, 76)
+const card4 = new card('James Harden', 'cardImages/harden.webp', 87, 90, 88, 91)
+const card5 = new card('Kevin Durant', 'cardImages/durant.jpg', 83, 92, 90, 89)
+const card6 = new card('Ben Simmons', 'cardImages/simmons.jpeg', 89, 36, 91, 90)
 
 let speedButton = document.getElementById('speedButton')
 let shootingButton = document.getElementById('shootingButton')
 let heightButton = document.getElementById('heightButton')
-message.innerHTML = "Choose a category"
+let reboundButton = document.getElementById('reboundButton')
 let nameP = document.getElementById('name')
 let speedP = document.getElementById('speed')
 let shootingP = document.getElementById('shooting')
 let heightP = document.getElementById('height')
+let reboundP = document.getElementById('rebound')
 let deckP = document.getElementById('cardsInDeck')
 let middleP = document.getElementById('cardsInMiddle')
-function card(name, speed, shooting, height) {
-    this.name = name;
+let cardImage = document.getElementById('cardimage')
+
+function card(name, image, speed, shooting, height, rebound) {
+    this.name = name
+    this.image = image
     this.speed = speed
     this.shooting = shooting
     this.height = height
+    this.rebound = rebound
 }
 
 let cards = [card1, card2, card3, card4, card5, card6]
 let userDeck = []
 let compDeck = []
 let centrePile = []
-let compDecision = ""
 
 function compTurn() {
-    if (compDeck[0].speed > compDeck[0].shooting && compDeck[0].speed > compDeck[0].height) {
-        compDecision = "speed"
+    if (compDeck[0].speed > compDeck[0].shooting && compDeck[0].speed > compDeck[0].height && compDeck[0].speed > compDeck[0].rebound) {
         shootingButton.disabled = true
         heightButton.disabled = true
+        reboundButton.disabled = true
         message.innerHTML = `Opponent has used ${compDeck[0].speed} speed.`
-    } else if (compDeck[0].shooting > compDeck[0].speed && compDeck[0].shooting > compDeck[0].height) {
-        compDecision = "shooting"
+    } else if (compDeck[0].shooting > compDeck[0].speed && compDeck[0].shooting > compDeck[0].height && compDeck[0].shooting > compDeck[0].rebound) {
         speedButton.disabled = true
         heightButton.disabled = true
+        reboundButton.disabled = true
         message.innerHTML = `Opponent has used ${compDeck[0].shooting} shooting.`
-    } else if (compDeck[0].height > compDeck[0].speed && compDeck[0].height > compDeck[0].shooting) {
-        compDecision = "height"
+    } else if (compDeck[0].height > compDeck[0].speed && compDeck[0].height > compDeck[0].shooting && compDeck[0].height > compDeck[0].rebound) {
         shootingButton.disabled = true
         speedButton.disabled = true
+        reboundButton.disabled = true
         message.innerHTML = `Opponent has used ${compDeck[0].height} height.`
+    } else if (compDeck[0].rebound > compDeck[0].speed && compDeck[0].rebound > compDeck[0].shooting && compDeck[0].rebound > compDeck[0].height) {
+        shootingButton.disabled = true
+        speedButton.disabled = true
+        heightButton.disabled = true
+        reboundButton.disabled = false
+        message.innerHTML = `Opponent has used ${compDeck[0].rebound} rebounding.`
     }
 
 }
@@ -52,7 +62,7 @@ function win() {
     speedButton.disabled = false
     shootingButton.disabled = false
     heightButton.disabled = false
-    console.log("yes")
+    reboundButton.disabled = false
     userDeck.push(userDeck.shift())
     userDeck.push(compDeck[0])
     for (let i = centrePile.length - 1; i >= 0; i --) {
@@ -60,13 +70,7 @@ function win() {
     }
     compDeck.shift()
 
-    nameP.innerHTML = `Name: ${userDeck[0].name}`
-    speedP.innerHTML = `Speed: ${userDeck[0].speed}`
-    shootingP.innerHTML = `Shooting: ${userDeck[0].shooting}`
-    heightP.innerHTML = `Height: ${userDeck[0].height}`
-    message.innerHTML = "Choose a category"
-    deckP.innerHTML = `Cards in deck: ${userDeck.length}/${cards.length}`
-    middleP.innerHTML = `Cards in middle: ${centrePile.length}` 
+    newMessage()
 
     console.log(userDeck)
     console.log(compDeck)
@@ -105,24 +109,12 @@ function lose() {
     userDeck.shift()
 
     if (userDeck.length > 0) {
+        newMessage() 
         compTurn()
     } else {
         newGame()
         message.innerHTML = "You lost! Try Again!" 
-    }
-
-    nameP.innerHTML = `Name: ${userDeck[0].name}`
-    speedP.innerHTML = `Speed: ${userDeck[0].speed}`
-    shootingP.innerHTML = `Shooting: ${userDeck[0].shooting}`
-    heightP.innerHTML = `Height: ${userDeck[0].height}` 
-    deckP.innerHTML = `Cards in deck: ${userDeck.length}/${cards.length}`
-    middleP.innerHTML = `Cards in middle: ${centrePile.length}` 
-    
-    console.log(userDeck)
-    console.log(compDeck)
-
-    
-    
+    } 
     
 }
 
@@ -145,10 +137,10 @@ function newGame() {
     compDeck = []
     centrePile = []
     userGo = true
-    compDecision = ""
     speedButton.disabled = false
     shootingButton.disabled = false
     heightButton.disabled = false
+    reboundButton.disabled = false
     shuffle(cards)
     for (let i = 0; i <= cards.length - 1; i++) {
         if (i < cards.length/2) {
@@ -157,13 +149,19 @@ function newGame() {
             compDeck.push(cards[i])
         }
     }
-    console.log(`user deck: ${userDeck} comp deck: ${compDeck}`)
+    newMessage()
+}
+
+function newMessage() {
     deckP.innerHTML = `Cards in deck: ${userDeck.length}/${cards.length}`
     middleP.innerHTML = `Cards in middle: ${centrePile.length}` 
-    nameP.innerHTML = `Name: ${userDeck[0].name}`
+    nameP.innerHTML = `${userDeck[0].name}`
     speedP.innerHTML = `Speed: ${userDeck[0].speed}`
     shootingP.innerHTML = `Shooting: ${userDeck[0].shooting}`
     heightP.innerHTML = `Height: ${userDeck[0].height}`
+    reboundP.innerHTML = `Rebounding: ${userDeck[0].rebound}`
+    message.innerHTML = `Choose a category.`
+    cardImage.src = userDeck[0].image
 }
 
 function speed() {
@@ -199,6 +197,15 @@ function height() {
     }
 }
 
-console.log(card1.speed)
+function rebound() {
+    if (userDeck[0].rebound > compDeck[0].rebound) {
+        win()
+        
+    } else if (userDeck[0].rebound == compDeck[0].rebound) {
+        draw()
+    } else if (userDeck[0].rebound < compDeck[0].rebound) {
+        lose()
+    }
+}
 
 newGame()
